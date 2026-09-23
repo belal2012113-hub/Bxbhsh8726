@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محلل الرقم القومي - 𝐄𝐋 𝐏𝐎𝐏</title>
+    <style>
+        :root {
+            --primary-color: #990000; /* أحمر داكن يتماشى مع لون الدم في الصورة */
+            --primary-hover: #cc0000;
+            --bg-overlay: rgba(15, 23, 42, 0.75); /* طبقة مظلمة فوق الصورة لزيادة وضوح الكلام */
+            --card-bg: rgba(30, 41, 59, 0.85); /* كارت شبه شفاف بطابع دارك */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --error-color: #ef4444;
+            --input-border: #475569;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            /* استدعاء الصورة كخلفية وتثبيتها */
+            background-image: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url('49281.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: var(--card-bg);
+            max-width: 500px;
+            width: 100%;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px); /* تأثير زجاجي غامق احترافي */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        header h1 {
+            font-size: 26px;
+            color: #ff3333;
+            margin-bottom: 8px;
+            text-shadow: 0 0 10px rgba(255, 51, 51, 0.5);
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #cbd5e1;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--input-border);
+            border-radius: 8px;
+            font-size: 18px;
+            text-align: center;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            outline: none;
+            background: rgba(15, 23, 42, 0.6);
+            color: #ffffff;
+        }
+
+        input:focus {
+            border-color: #ff3333;
+            box-shadow: 0 0 10px rgba(255, 51, 51, 0.3);
+        }
+
+        button {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        button:hover {
+            background-color: var(--primary-hover);
+            box-shadow: 0 0 15px rgba(204, 0, 0, 0.6);
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 13px;
+            margin-top: 8px;
+            display: none;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .results {
+            margin-top: 25px;
+            border-top: 2px dashed rgba(255, 255, 255, 0.2);
+            padding-top: 20px;
+            display: none;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-label {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .result-value {
+            font-weight: 600;
+            color: #ffffff;
+            font-size: 15px;
+        }
+
+        footer {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 15px;
+        }
+
+        footer .credits {
+            color: #ff3333;
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>محلل الرقم القومي بࢪعاية 𝐄𝐋 𝐏𝐎𝐏</h1>
+        <p>الأداة الرسمية لفحص وتحليل الهويات</p>
+    </header>
+
+    <div class="input-group">
+        <label for="nationalId">أدخل الرقم القومي (14 رقم):</label>
+        <input type="text" id="nationalId" maxlength="14" placeholder="2950102XXXXXXX" inputmode="numeric">
+        <div id="errorMsg" class="error-message"></div>
+    </div>
+
+    <button onclick="analyzeID()">تحليل الهوية الجنائية</button>
+
+    <div id="resultsCard" class="results">
+        <div class="result-item">
+            <span class="result-label">تاريخ الميلاد:</span>
+            <span id="birthDate" class="result-value">-</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label">السن الحالي:</span>
+            <span id="age" class="result-value">-</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label">محافظة الميلاد:</span>
+            <span id="gov" class="result-value">-</span>
+        </div>
+        <div class="result-item">
+            <span class="result-label">النوع:</span>
+            <span id="gender" class="result-value">-</span>
+        </div>
+    </div>
+
+    <footer>
+        <p class="credits">تم التطوير بواسطة: 𝗘𝗟 𝗣𝗢𝗣 𝗘𝗟 𝗬𝗢𝗨𝗧𝗨𝗕𝗘𝗥ً</p>
+        <p>🔒 عملية التحليل آمنة ومحلية بالكامل، لا يتم تخزين أي بيانات على خوادم خارجية.</p>
+        <p style="margin-top: 5px;">&copy; 2026 𝐄𝐋 𝐏𝐎𝐏. All Rights Reserved.</p>
+    </footer>
+</div>
+
+<script>
+    const govCodes = {
+        "01": "القاهرة", "02": "الإسكندرية", "03": "بورسعيد", "04": "السويس",
+        "11": "دمياط", "12": "الدقهلية", "13": "الشرقية", "14": "القليوبية",
+        "15": "كفر الشيخ", "16": "الغربية", "17": "المنوفية", "18": "البحيرة",
+        "19": "الإسماعيلية", "21": "الجيزة", "22": "بني سويف", "23": "الفيوم",
+        "24": "المنيا", "25": "أسيوط", "26": "سوهاج", "27": "قنا",
+        "28": "أسوان", "29": "الأقصر", "31": "البحر الأحمر", "32": "الوادي الجديد",
+        "33": "مطروح", "34": "شمال سيناء", "35": "جنوب سيناء", "88": "خارج الجمهورية"
+    };
+
+    function analyzeID() {
+        const idInput = document.getElementById('nationalId').value.trim();
+        const errorMsg = document.getElementById('errorMsg');
+        const resultsCard = document.getElementById('resultsCard');
+
+        errorMsg.style.display = 'none';
+        resultsCard.style.display = 'none';
+
+        if (idInput.length !== 14 || isNaN(idInput)) {
+            showError("خطأ: يجب إدخال 14 رقماً صحيحاً.");
+            return;
+        }
+
+        const centuryCode = idInput.charAt(0);
+        const yearPair = idInput.substring(1, 3);
+        const monthPair = idInput.substring(3, 5);
+        const dayPair = idInput.substring(5, 7);
+        const govPair = idInput.substring(7, 9);
+        const genderDigit = idInput.charAt(12);
+
+        let century = "";
+        if (centuryCode === "2") century = "19";
+        else if (centuryCode === "3") century = "20";
+        else {
+            showError("رقم القرن غير مدعوم أو غير صحيح.");
+            return;
+        }
+
+        const birthYear = parseInt(century + yearPair);
+        const birthMonth = parseInt(monthPair) - 1;
+        const birthDay = parseInt(dayPair);
+
+        const birthDateObj = new Date(birthYear, birthMonth, birthDay);
+        if (birthDateObj.getFullYear() !== birthYear || birthDateObj.getMonth() !== birthMonth || birthDateObj.getDate() !== birthDay) {
+            showError("بيانات تاريخ الميلاد في الرقم القومي غير صالحة.");
+            return;
+        }
+
+        const govName = govCodes[govPair];
+        if (!govName) {
+            showError("كود المحافظة المرفق بالرقم غير معروف.");
+            return;
+        }
+
+        const gender = (parseInt(genderDigit) % 2 === 0) ? "أنثى" : "ذكر";
+
+        const today = new Date();
+        let ageYears = today.getFullYear() - birthDateObj.getFullYear();
+        let ageMonths = today.getMonth() - birthDateObj.getMonth();
+        let ageDays = today.getDate() - birthDateObj.getDate();
+
+        if (ageDays < 0) {
+            ageMonths--;
+            const previousMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+            ageDays += previousMonth.getDate();
+        }
+
+        if (ageMonths < 0) {
+            ageYears--;
+            ageMonths += 12;
+        }
+
+        document.getElementById('birthDate').innerText = `${birthDay} / ${birthMonth + 1} / ${birthYear}`;
+        document.getElementById('age').innerText = `${ageYears} سنة، و ${ageMonths} شهر، و ${ageDays} يوم`;
+        document.getElementById('gov').innerText = govName;
+        document.getElementById('gender').innerText = gender;
+
+        resultsCard.style.display = 'block';
+    }
+
+    function showError(msg) {
+        const errorMsg = document.getElementById('errorMsg');
+        errorMsg.innerText = msg;
+        errorMsg.style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
